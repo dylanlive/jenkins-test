@@ -9,5 +9,5 @@ if [[ -z "$1" || -z "$2" ]]; then
 fi
 
 # Do the math and return it
-echo $(expr "$1" + "$2")
+echo $(expr "$1" + "$1")
 exit 0
