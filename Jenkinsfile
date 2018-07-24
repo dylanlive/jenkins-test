@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building"
+                echo "Building by Zipping Up Artifacts"
+                sh 'zip my_build.zip my_addition_app.sh'
             }
         }
         stage('Test') {
@@ -14,7 +15,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                // This is where we would deploy to servers, but for simplicity just removing the file
                 echo "Deploying"
+                sh 'rm my_build.zip'
             }
         }
     }
