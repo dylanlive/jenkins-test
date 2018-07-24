@@ -1,10 +1,13 @@
 pipeline {
     agent any
+    parameters {
+            string(name: 'ARTIFACT_ID', defaultValue: 'main', description: 'The artifact ID?')
+        }
     stages {
         stage('Build') {
             steps {
                 echo "Building by Zipping Up Artifacts"
-                sh 'zip my_build.zip my_addition_app.sh'
+                sh "tar -czvf build-${params.ARTIFACT_ID}.tar.gz my_addition_app.sh"
             }
         }
         stage('Test') {
@@ -17,7 +20,7 @@ pipeline {
             steps {
                 // This is where we would deploy to servers, but for simplicity just removing the file
                 echo "Deploying"
-                sh 'rm my_build.zip'
+                sh "rm build-${params.ARTIFACT_ID}.tar.gz"
             }
         }
     }
