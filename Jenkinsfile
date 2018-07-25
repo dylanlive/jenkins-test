@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-            string(name: 'ARTIFACT_ID', defaultValue: 'main', description: 'The artifact ID?')
+            string(name: 'ARTIFACT_ID', defaultValue: 'main', description: 'The artifact ID')
         }
     stages {
         stage('Build') {
